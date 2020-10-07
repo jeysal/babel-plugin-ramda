@@ -19,7 +19,7 @@ export default function({ types: t }) {
   // Import a ramda method and return the computed import identifier
   function importMethod(useES, methodName, file) {
     if (!selectedMethods[methodName]) {
-      let path = resolveModule(useES, methodName);
+      let path = resolveModule(useES, methodName, file.opts.filename);
       selectedMethods[methodName] = addDefault(file.path, path, { nameHint: methodName });
     }
     return t.clone(selectedMethods[methodName]);
